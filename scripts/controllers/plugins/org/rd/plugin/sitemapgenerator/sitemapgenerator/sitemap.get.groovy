@@ -3,7 +3,7 @@ import org.craftercms.engine.service.context.SiteContext
 import java.util.regex.Pattern
 
 def baseUrl = (pluginConfig.getString("baseUrl")) ? pluginConfig.getString("baseUrl") : "ConfigureThisPlugin"
-
+baseUrl+="/abc/"
 // Go to search and get all pages that are NOT disabled
 def pageItems = queryPages(params.route, elasticsearch)
 
