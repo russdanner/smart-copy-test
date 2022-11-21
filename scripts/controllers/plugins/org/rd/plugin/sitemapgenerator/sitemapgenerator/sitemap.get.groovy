@@ -32,7 +32,7 @@ pageItems.each { v ->
         SiteContext context = SiteContext.current 
         
         def url = urlTransformationService.transform("storeUrlToRenderUrl", v.localId)
-        def fullyQualifiedUrl = baseUrl+url
+        def fullyQualifiedUrl = concatUrlParts(baseUrl, url)
         
         urlItem.loc = fullyQualifiedUrl
         urlItem.lastmod = v.lastModifiedDate_dt  
@@ -96,4 +96,12 @@ def queryPages(route, elasticsearch) {
                 ] 
         ]).hits.hits*.sourceAsMap  
     return results  
+}
+
+/**
+ * concat serverName and URL and account for trailing and leading slashes
+ */
+def concatUrlParts(serverName, url){
+    def server = serverName.endsWith("/") ? serverName.substring(0, serverName.length()-1) : serverName
+    return server + url
 }
