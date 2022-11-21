@@ -17,8 +17,8 @@ def xml = new groovy.xml.MarkupBuilder(response.getWriter())
 def xmlHelper = new groovy.xml.MarkupBuilderHelper(xml)
 xmlHelper.xmlDeclaration(version:"1.0", encoding:"UTF-8")
 
-
-xml.urlset(xmlns:"http://www.sitemaps.org/schemas/sitemap/0.9") {
+//.urlset(xmlns:"http://www.sitemaps.org/schemas/sitemap/0.9")
+xml {
     pageItems.each { v ->
         def issue = ""
         // check if the current item is black listed
