@@ -11,45 +11,44 @@ def pageItems = queryPages(params.route, elasticsearch)
 def excludePatterns = getBlackListPatterns(siteConfig)
 
 // Prepare the response
-response.setContentType("application/xml")
-def xml = new groovy.xml.MarkupBuilder(response.getWriter())
+def pages = []
 
-def xmlHelper = new groovy.xml.MarkupBuilderHelper(xml)
-xmlHelper.xmlDeclaration(version:"1.0", encoding:"UTF-8")
+pageItems.each { v ->
+    def issue = ""
+    // check if the current item is black listed
+    def blackListed = false
+    excludePatterns.any { patternAsStr ->
+        def excludePattern = Pattern.compile(patternAsStr, Pattern.CASE_INSENSITIVE)
+        def excludeMatcher = excludePattern.matcher( v.localId )
+        blackListed = excludeMatcher.find()
 
-//.urlset(xmlns:"http://www.sitemaps.org/schemas/sitemap/0.9")
-xml {
-    pageItems.each { v ->
-        def issue = ""
-        // check if the current item is black listed
-        def blackListed = false
-        excludePatterns.any { patternAsStr ->
-            def excludePattern = Pattern.compile(patternAsStr, Pattern.CASE_INSENSITIVE)
-            def excludeMatcher = excludePattern.matcher( v.localId )
-            blackListed = excludeMatcher.find()
+        // don't keep searching patterns. A match was found
+        if(blackListed) return true
+    }
 
-            // don't keep searching patterns. A match was found
-            if(blackListed) return true
-        }
+    // if not black listed, add it        
+    if(blackListed == false) {
+        def urlItem = [:]
+        SiteContext context = SiteContext.current 
+        
+        def url = urlTransformationService.transform("storeUrlToRenderUrl", v.localId)
+        def fullyQualifiedUrl = baseUrl+url
+        
+        urlItem.loc = fullyQualifiedUrl
+        urlItem.lastmod = v.lastModifiedDate_dt  
+        urlItem.changefreq = "weekly" 
+        urlItem.priority = "0.8000"
 
-        // if not black listed, add it        
-        if(blackListed == false) {
-            url {
-                SiteContext context = SiteContext.current 
-                url = urlTransformationService.transform("storeUrlToRenderUrl", v.localId)
-                fullyQualifiedUrl = baseUrl+url
-                loc(fullyQualifiedUrl)
-                lastmod(v.lastModifiedDate_dt)  
-                changefreq("weekly")
-                priority(0.8000)
-            }
-        }
+        pages.add(urlItem)
     }
 }
 
-response.flushBuffer()
 
-return null
+templateModel.pages = pages
+
+response.setContentType("application/xml")
+
+return "/templates/plugins/org/rd/plugin/sitemapgenerator/sitemapgenerator/sitemap.ftl"
 
 /**
  * get site map blacklist 
