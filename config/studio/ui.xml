@@ -343,6 +343,24 @@
          <middleSection>
             <widgets>
                <widget id="craftercms.components.PreviewAddressBar"/>
+
+
+
+               <widget id="org.rd.plugin.smartcopy.openSmartCopyToolbarButton">
+                  <plugin id="org.rd.plugin.smartcopy"
+                          site="{site}"
+                          type="apps"
+                          name="smartcopy"
+                          file="index.js"/>
+                 <configuration>
+                     <title>Copy for Translation</title> 
+                     <icon id="@mui/icons-material/TranslateRounded"/>
+                 </configuration>                
+               </widget>
+
+
+
+               
             </widgets>
          </middleSection>
          <rightSection>
@@ -364,13 +382,7 @@
                      </widget>
                   </configuration>
                </widget>
-               <widget id="org.rd.plugin.smartcopy.openSmartCopyToolbarButton">
-                  <plugin id="org.rd.plugin.smartcopy"
-                          site="{site}"
-                          type="apps"
-                          name="smartcopy"
-                          file="index.js"/>
-               </widget>
+
             </widgets>
          </rightSection>
       </configuration>
