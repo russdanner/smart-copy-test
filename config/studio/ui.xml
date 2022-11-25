@@ -379,6 +379,13 @@
                           name="smartcopy"
                           file="index.js"/>
                </widget>
+               <widget id="org.rd.plugin.smartcopy.openSmartCopyToolbarButton">
+                  <plugin id="org.rd.plugin.smartcopy"
+                          site="{site}"
+                          type="apps"
+                          name="smartcopy"
+                          file="index.js"/>
+               </widget>
             </widgets>
          </rightSection>
       </configuration>
