@@ -341,7 +341,7 @@
                           file="index.js"/>
                   <configuration>
                      <title>Copy for Translation</title>
-                     <icon id="@mui/icons-material/TranslateRounded"/>
+                     <icon>@mui/icons-material/TranslateRounded</icon>
                   </configuration>
                </widget>
             </widgets>
@@ -364,6 +364,13 @@
                         </configuration>
                      </widget>
                   </configuration>
+               </widget>
+               <widget id="org.rd.plugin.smartcopy.openSmartCopyToolbarButton">
+                  <plugin id="org.rd.plugin.smartcopy"
+                          site="{site}"
+                          type="apps"
+                          name="smartcopy"
+                          file="index.js"/>
                </widget>
                <widget id="org.rd.plugin.smartcopy.openSmartCopyToolbarButton">
                   <plugin id="org.rd.plugin.smartcopy"
