@@ -341,7 +341,7 @@
                           file="index.js"/>
                   <configuration>
                      <title>Copy for Translation</title>
-                     <icon>@mui/icons-material/TranslateRounded</icon>
+                     <icon id="@mui/icons-material/TranslateRounded" />
                   </configuration>
                </widget>
             </widgets>
