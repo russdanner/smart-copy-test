@@ -26,6 +26,27 @@
                   <widget id="craftercms.components.Dashboard"/>
                </configuration>
             </widget>
+
+
+
+
+            <widget id="org.rd.plugin.smartcopy.openSmartCopyPanelButton">
+               <plugin id="org.rd.plugin.smartcopy"
+                       site="{site}"
+                       type="apps"
+                       name="smartcopy"
+                       file="index.js"/>
+                <!-- optional parameters -->
+                <configuration>
+                    <title>Copy for Translation</title> 
+                    <icon id="@mui/icons-material/TranslateRounded"/>
+                </configuration>                
+            </widget>
+
+
+
+
+
             <widget id="craftercms.components.PathNavigator">
                <configuration>
                   <id>Pages</id>
@@ -88,13 +109,6 @@
                   <icon id="@mui/icons-material/ConstructionRounded"/>
                   <widget id="craftercms.components.EmbeddedSiteTools"/>
                </configuration>
-            </widget>
-            <widget id="org.rd.plugin.smartcopy.openSmartCopyPanelButton">
-               <plugin id="org.rd.plugin.smartcopy"
-                       site="{site}"
-                       type="apps"
-                       name="smartcopy"
-                       file="index.js"/>
             </widget>
          </widgets>
       </configuration>
