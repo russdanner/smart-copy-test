@@ -36,11 +36,6 @@
                        type="apps"
                        name="smartcopy"
                        file="index.js"/>
-                <!-- optional parameters -->
-                <configuration>
-                    <title>Copy for Translation</title> 
-                    <icon id="@mui/icons-material/TranslateRounded"/>
-                </configuration>                
             </widget>
 
 
