@@ -70,7 +70,7 @@
       </component>
 	</item>	<item datasource="features">	<key>/site/components/features/en/72ef047f-02b7-89e2-bbd5-4763ac7dbca8.xml</key>
 	<value>Closed captioning</value>
-	<include>/site/components/features/72ef047f-02b7-89e2-bbd5-4763ac7dbca8.xml</include>
+	<include>/site/components/features/en/72ef047f-02b7-89e2-bbd5-4763ac7dbca8.xml</include>
 	<disableFlattening>false</disableFlattening>
 	</item></features_o>
 	<hero_image_s>/static-assets/images/strawberries.jpg</hero_image_s>
